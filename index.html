@@ -89,6 +89,9 @@
             font-size: 1.2em;
             color: #333;
         }
+        .feedback-button {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -113,14 +116,18 @@
         </section>
         <section id="activity" class="activity">
             <h1>二次元共创计划</h1>
+            <p>加入氢闪云，共同打造属于你的二次元世界！</p>
             <a href="activity-details.html" class="layui-btn layui-btn-normal" target="_blank">查看详情</a>
         </section>
-    </div>
-    <div class="notice layui-carousel">
-        <div carousel-item>
-            <div class="layui-carousel-item">【重要公告】氢闪云将举办二次元共创计划，欢迎所有二次元爱好者参与！</div>
-            <div class="layui-carousel-item">【通知】网站正在测试中，请耐心等待！</div>
-            <div class="layui-carousel-item">【技术支持】氢闪云提供全方位的技术支持和解决方案，助力您的业务发展！</div>
+        <div class="notice layui-carousel">
+            <div carousel-item>
+                <div class="layui-carousel-item">【重要公告】氢闪云将举办二次元共创计划，欢迎所有二次元爱好者参与！</div>
+                <div class="layui-carousel-item">【通知】网站正在测试中，请耐心等待！</div>
+                <div class="layui-carousel-item">【技术支持】氢闪云提供全方位的技术支持和解决方案，助力您的业务发展！</div>
+            </div>
+        </div>
+        <div class="feedback-button">
+            <button class="layui-btn layui-btn-primary" id="feedbackButton">反馈</button>
         </div>
     </div>
     <footer class="footer">
@@ -149,6 +156,69 @@
                 ,arrow: 'none' // 不显示箭头
                 ,anim: 'updown' // 设置动画效果
                 ,interval: 2000 // 设置自动切换的时间间隔
+            });
+        });
+
+        // 反馈弹窗
+        layui.use(['layer', 'form'], function(){
+            var layer = layui.layer;
+            var form = layui.form;
+
+            document.getElementById('feedbackButton').addEventListener('click', function () {
+                layer.open({
+                    type: 1,
+                    title: '反馈',
+                    area: ['400px', '300px'],
+                    content: `
+                        <div style="padding: 20px;">
+                            <form class="layui-form" id="feedbackForm">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">姓名</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="name" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">邮箱</label>
+                                    <div class="layui-input-block">
+                                        <input type="email" name="email" required lay-verify="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">反馈内容</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="content" required lay-verify="required" placeholder="请输入反馈内容" class="layui-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" id="sendEmailButton">提交</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    `,
+                    btn: ['关闭'],
+                    btn1: function(index, layero){
+                        layer.close(index);
+                    }
+                });
+            });
+
+            // 使用mailto:协议发送邮件
+            document.getElementById('sendEmailButton').addEventListener('click', function () {
+                var feedbackForm = document.getElementById('feedbackForm');
+                var formData = new FormData(feedbackForm);
+                var to = 'support@qianhuanyun.com'; // 收件人邮箱地址
+                var subject = '用户反馈';
+                var body = '姓名: ' + formData.get('name') + '%0D%0A' +
+                           '邮箱: ' + formData.get('email') + '%0D%0A' +
+                           '反馈内容: ' + formData.get('content');
+
+                var mailtoUrl = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+                console.log('mailto URL:', mailtoUrl); // 添加调试信息
+                window.location.href = mailtoUrl;
             });
         });
     </script>
