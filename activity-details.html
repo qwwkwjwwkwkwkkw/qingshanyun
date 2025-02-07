@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二次元共创计划详情</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui-src/dist/css/layui.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffec99;
+        }
+        .container {
+            margin-top: 100px; /* 确保内容不会被固定的header遮挡 */
+            padding: 20px;
+        }
+        .activity-details {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .activity-details h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #007bff;
+        }
+        .activity-details p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: left;
+            margin: 20px 0;
+        }
+        .footer {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="layui-container">
+            <h1>氢闪云</h1>
+            <p>专业的云服务提供商</p>
+        </div>
+    </header>
+    <nav class="layui-nav" style="background-color: #0056b3;">
+        <div class="layui-container">
+            <a href="#home" class="layui-nav-item">首页</a>
+            <a href="#services" class="layui-nav-item">服务</a>
+            <a href="#activity" class="layui-nav-item">活动</a>
+            <a href="#contact" class="layui-nav-item">联系我们</a>
+        </div>
+    </nav>
+    <div class="container layui-container">
+        <section class="activity-details">
+            <h1>二次元共创计划</h1>
+            <p>欢迎加入氢闪云的二次元共创计划！我们致力于为喜爱二次元文化的开发者和爱好者提供一个展示和交流的平台。</p>
+            <p>无论您是画师、写手还是配音爱好者，氢闪云都欢迎您的加入！</p>
+            <p>参与方式：<br>1. 注册氢闪云账号<br>2. 提交您的作品<br>3. 加入我们的共创社区</p>
+        </section>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2023 氢闪云 版权所有</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/layui-src/dist/layui.js"></script>
+</body>
+</html>

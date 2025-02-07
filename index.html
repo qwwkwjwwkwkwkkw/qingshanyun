@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>氢闪云官网</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui-src/dist/css/layui.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffec99;
+        }
+        .container {
+            margin-top: 100px; /* 确保内容不会被固定的header遮挡 */
+            padding: 20px;
+        }
+        .activity {
+            background-color: #f4f4f9;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .activity h1 {
+            margin: 0;
+            font-size: 3em;
+            color: #007bff;
+        }
+        .activity p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .footer {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+        .notice {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            height: 40px;
+        }
+        .notice .layui-carousel-indicators {
+            display: none;
+        }
+        .notice .layui-carousel-content {
+            height: 40px;
+        }
+        .notice .layui-carousel-item {
+            height: 40px;
+            line-height: 40px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="layui-container">
+            <h1>氢闪云</h1>
+            <p>专业的云服务提供商</p>
+        </div>
+    </header>
+    <nav class="layui-nav" style="background-color: #0056b3;">
+        <div class="layui-container">
+            <a href="#home" class="layui-nav-item">首页</a>
+            <a href="#services" class="layui-nav-item">服务</a>
+            <a href="#activity" class="layui-nav-item">活动</a>
+            <a href="#contact" class="layui-nav-item">联系我们</a>
+        </div>
+    </nav>
+    <div class="container layui-container">
+        <section id="home" class="hero">
+            <h1>氢闪云</h1>
+            <p>高效、可靠的云服务</p>
+        </section>
+        <section id="activity" class="activity">
+            <h1>二次元共创计划</h1>
+            <a href="activity-details.html" class="layui-btn layui-btn-normal" target="_blank">查看详情</a>
+        </section>
+    </div>
+    <div class="notice layui-carousel">
+        <div carousel-item>
+            <div class="layui-carousel-item">【重要公告】氢闪云将举办二次元共创计划，欢迎所有二次元爱好者参与！</div>
+            <div class="layui-carousel-item">【通知】网站正在测试中，请耐心等待！</div>
+            <div class="layui-carousel-item">【技术支持】氢闪云提供全方位的技术支持和解决方案，助力您的业务发展！</div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 氢闪云</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/layui-src/dist/layui.js"></script>
+    <script>
+        // 平滑滚动到锚点
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 初始化轮播组件
+        layui.use('carousel', function(){
+            var carousel = layui.carousel;
+            // 建造实例
+            carousel.render({
+                elem: '.notice'
+                ,width: '100%' // 设置轮播宽度
+                ,height: '40px' // 设置轮播高度
+                ,arrow: 'none' // 不显示箭头
+                ,anim: 'updown' // 设置动画效果
+                ,interval: 2000 // 设置自动切换的时间间隔
+            });
+        });
+    </script>
+</body>
+</html>
